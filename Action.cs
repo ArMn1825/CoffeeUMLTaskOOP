@@ -2,11 +2,14 @@ public abstract class Action : IElement
 {
     private readonly List<IElement> _elements = new List<IElement>();
     public IReadOnlyList<IElement> Elements => _elements.AsReadOnly();
-    public Action(List<IElement> elements)
+    public Action(List<IElement> ?elements = null)
     {
-        foreach (var elem in elements)
+        if (elements != null)
         {
-            Add(elem);
+            foreach (var elem in elements)
+            {
+                Add(elem);
+            }
         }
     }
     public void Add(IElement new_element)
@@ -51,4 +54,40 @@ public abstract class Action : IElement
     }
     public abstract void Execute();
     public abstract string GetInfo();
+    protected void ExecuteElements()
+    {
+        string result = "";
+        foreach (var elem in Elements)
+        {
+            if (elem is Ingredient)
+            {
+                result += elem.GetInfo() + '\n';
+            }
+            else if (elem is Action elem_act)
+            {
+                result += "Result of {\n";
+                elem_act.Execute();
+                result += "}\n";
+            }
+        }
+        Console.Out.Write(result);
+    }
+    public bool ContainsIngredient<T>() where T : Ingredient
+    {
+        foreach (var elem in Elements)
+        {
+            if (elem is T)
+            {
+                return true;
+            }
+            else if (elem is Action act)
+            {
+                if (act.ContainsIngredient<T>())
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
