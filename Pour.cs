@@ -5,7 +5,7 @@ public class Pour : Action
     public override string GetInfo() => "Pouring ingredients";
     public override void Execute()
     {
-        Console.Out.WriteLine("Pouring:\n");
+        Console.Out.WriteLine("\nPouring:");
         ExecuteElements();
         bool has_dry_beans = false;
         foreach (var elem in Elements)

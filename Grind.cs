@@ -5,7 +5,7 @@ public class Grind : Action
     public override string GetInfo() => "Grinding ingredients";
     public override void Execute()
     {
-        Console.Out.WriteLine("Grinding:\n");
+        Console.Out.WriteLine("\nGrinding:");
         ExecuteElements();
         if (ContainsIngredient<CoffeeBean>())
         {
@@ -14,7 +14,7 @@ public class Grind : Action
         else if (ContainsIngredient<Water>() || ContainsIngredient<Milk>() ||
                  ContainsIngredient<Ice>() || ContainsIngredient<Syrup>())
         {
-            Console.Out.WriteLine("GRINDING IS IMPOSSIBLE!!!" +
+            Console.Out.WriteLine("GRINDING IS IMPOSSIBLE!!! " +
                                   "Please remove dangerous ingredients from grinding machine!");
         }
         else

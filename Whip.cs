@@ -5,7 +5,7 @@ public class Whip : Action
     public override string GetInfo() => "Whiping ingredients";
     public override void Execute()
     {
-        Console.Out.WriteLine("Whiping:\n");
+        Console.Out.WriteLine("\nWhiping:");
         ExecuteElements();
         if (ContainsIngredient<Milk>())
         {
@@ -13,7 +13,7 @@ public class Whip : Action
         }
         else
         {
-            Console.Out.WriteLine("Whipping has no effect/");
+            Console.Out.WriteLine("Whipping has no effect.");
         }
     }
 }

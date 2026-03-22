@@ -5,7 +5,7 @@ public class Boil : Action
     public override string GetInfo() => "Boiling ingredients";
     public override void Execute()
     {
-        Console.Out.WriteLine("Boiling:");
+        Console.Out.WriteLine("\nBoiling:");
         ExecuteElements();
         if (ContainsIngredient<Water>() || ContainsIngredient<Ice>() || ContainsIngredient<Milk>())
         {

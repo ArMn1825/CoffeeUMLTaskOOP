@@ -5,7 +5,7 @@ public class Add : Action
     public override string GetInfo() => "Adding ingredients";
     public override void Execute()
     {
-        Console.Out.WriteLine("Adding:\n");
+        Console.Out.WriteLine("\nAdding:");
         ExecuteElements();
         Console.Out.WriteLine("Adding completed successfully!");
     }

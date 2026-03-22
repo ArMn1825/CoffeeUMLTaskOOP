@@ -57,12 +57,12 @@ public class Program
     }
     public static void Main()
     {
-        string ?recipe;
-        recipe = Console.In.ReadLine();
+        string recipe = Console.In.ReadToEnd();
         if (recipe != null) {
             Drink drink = ParseJSONRecipe(recipe);
             if (drink.Recipe is Action act)
             {
+                Console.Out.WriteLine("Your drink is getting ready:");
                 act.Execute();
             }
             else if (drink.Recipe is Ingredient) /* I reaally want to have LiquidIngredient class */

@@ -56,21 +56,19 @@ public abstract class Action : IElement
     public abstract string GetInfo();
     protected void ExecuteElements()
     {
-        string result = "";
+        Console.Out.WriteLine("{");
         foreach (var elem in Elements)
         {
             if (elem is Ingredient)
             {
-                result += elem.GetInfo() + '\n';
+                Console.Out.WriteLine(elem.GetInfo());
             }
             else if (elem is Action elem_act)
             {
-                result += "Result of {\n";
                 elem_act.Execute();
-                result += "}\n";
             }
         }
-        Console.Out.Write(result);
+        Console.Out.WriteLine("}");
     }
     public bool ContainsIngredient<T>() where T : Ingredient
     {
