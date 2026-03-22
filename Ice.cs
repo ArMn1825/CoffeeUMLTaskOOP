@@ -1,4 +1,4 @@
-public abstract class Ice : Ingredient
+public class Ice : Ingredient
 {
     public string Shape { get; set; }
     public Ice(double mass,  string shape = "cube") : base(mass)

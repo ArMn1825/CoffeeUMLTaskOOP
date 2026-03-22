@@ -1,6 +1,7 @@
 public class Boil : Action
 {
     public Boil(List<IElement> ?elements = null) : base(elements) {}
+    public Boil() : base(null) {}
     public override string GetInfo() => "Boiling ingredients";
     public override void Execute()
     {
@@ -11,13 +12,13 @@ public class Boil : Action
             Console.Out.WriteLine("Boiling completed successfully!");
             if (ContainsIngredient<Ice>())
             {
-                Console.Out.WriteLine("Note: boiling ice may be a mistake");
+                Console.Out.WriteLine("Note: boiling ice may be a mistake.");
                 /* if execution should modify actual state of ingredients there will be change */
             }
         }
         else
         {
-            Console.Out.WriteLine("BOILING FAILED! There is not liquid to boil");
+            Console.Out.WriteLine("BOILING FAILED! There is not liquid to boil!");
         }
     }
 }

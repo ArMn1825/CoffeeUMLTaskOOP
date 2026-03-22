@@ -1,4 +1,4 @@
-public abstract class CoffeeBean : Ingredient
+public class CoffeeBean : Ingredient
 {
     public string CoffeeSort { get; set; }
     public CoffeeBean(double mass,  string coffee_sort = "unspecified") : base(mass)

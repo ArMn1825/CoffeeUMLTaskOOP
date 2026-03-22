@@ -1,6 +1,7 @@
 public class Pour : Action
 {
     public Pour(List<IElement> ?elements = null) : base(elements) {}
+    public Pour() : base(null) {}
     public override string GetInfo() => "Pouring ingredients";
     public override void Execute()
     {
@@ -20,7 +21,7 @@ public class Pour : Action
         }
         if (has_dry_beans && ContainsIngredient<Water>())
         {
-            Console.Out.WriteLine("Pouring completed successfully.");
+            Console.Out.WriteLine("Pouring completed successfully!");
         }
         else
         {

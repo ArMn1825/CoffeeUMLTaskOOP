@@ -2,3 +2,4 @@ CoffeeUML.csproj
 CoffeeUML.sln
 bin/*
 obj/*
+input*

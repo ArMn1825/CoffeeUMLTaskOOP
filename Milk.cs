@@ -1,4 +1,4 @@
-public abstract class Milk : Ingredient
+public class Milk : Ingredient
 {
     private const double DENSITY = 1;
     private double _fat_content;

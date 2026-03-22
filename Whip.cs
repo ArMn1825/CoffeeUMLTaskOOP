@@ -1,6 +1,7 @@
 public class Whip : Action
 {
     public Whip(List<IElement> ?elements = null) : base(elements) {}
+    public Whip() : base(null) {}
     public override string GetInfo() => "Whiping ingredients";
     public override void Execute()
     {
@@ -8,11 +9,11 @@ public class Whip : Action
         ExecuteElements();
         if (ContainsIngredient<Milk>())
         {
-            Console.Out.WriteLine("Whiping completed successfully.");
+            Console.Out.WriteLine("Whiping completed successfully!");
         }
         else
         {
-            Console.Out.WriteLine("There is nothing to whip.");
+            Console.Out.WriteLine("Whipping has no effect/");
         }
     }
 }
