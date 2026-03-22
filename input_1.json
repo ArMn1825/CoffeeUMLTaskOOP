@@ -1,0 +1,40 @@
+{
+    "type": "mix",
+    "elements": [
+        {
+            "type": "pour",
+            "elements": [
+                {
+                    "type": "boil",
+                    "elements": [
+                        {
+                            "type": "water",
+                            "mass": 250,
+                            "salinity": 0.0
+                        }
+                    ]
+                },
+                {
+                    "type": "grind",
+                    "elements": [
+                        {
+                            "type": "coffeebean",
+                            "mass": 18,
+                            "sort": "Ethiopia"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "whip",
+            "elements": [
+                {
+                    "type": "milk",
+                    "mass": 150,
+                    "fat_content": 3.5
+                }
+            ]
+        }
+    ]
+}
