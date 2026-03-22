@@ -2,11 +2,11 @@ public class Grind : Action
 {
     public Grind(List<IElement> ?elements = null) : base(elements) {}
     public Grind() : base(null) {}
-    public override string GetInfo() => "Grinding ingredients";
+    public override string GetInfo() => $"PID {Id}: Grinding ingredients";
     public override void Execute()
     {
-        Console.Out.WriteLine("\nGrinding:");
         ExecuteElements();
+        CurrentExecutionInfo();
         if (ContainsIngredient<CoffeeBean>())
         {
             Console.Out.WriteLine("Grinding completed successfully!");

@@ -2,11 +2,11 @@ public class Pour : Action
 {
     public Pour(List<IElement> ?elements = null) : base(elements) {}
     public Pour() : base(null) {}
-    public override string GetInfo() => "Pouring ingredients";
+    public override string GetInfo() => $"PID {Id}: Pouring ingredients";
     public override void Execute()
     {
-        Console.Out.WriteLine("\nPouring:");
         ExecuteElements();
+        CurrentExecutionInfo();
         bool has_dry_beans = false;
         foreach (var elem in Elements)
         {

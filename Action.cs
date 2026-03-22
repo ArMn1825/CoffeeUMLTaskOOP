@@ -1,9 +1,15 @@
 public abstract class Action : IElement
 {
+    private static int _id_counter = 0;
+    public int Id { get; private set; }
     private readonly List<IElement> _elements = new List<IElement>();
     public IReadOnlyList<IElement> Elements => _elements.AsReadOnly();
+    public abstract void Execute();
+    public abstract string GetInfo();
     public Action(List<IElement> ?elements = null)
     {
+        Id = _id_counter;
+        _id_counter++;
         if (elements != null)
         {
             foreach (var elem in elements)
@@ -34,6 +40,24 @@ public abstract class Action : IElement
             Console.Error.WriteLine($"{element.GetInfo()} isn't in action {this.GetInfo()}");
         }
     }
+    public bool ContainsIngredient<T>() where T : Ingredient
+    {
+        foreach (var elem in Elements)
+        {
+            if (elem is T)
+            {
+                return true;
+            }
+            else if (elem is Action act)
+            {
+                if (act.ContainsIngredient<T>())
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     private bool CreatesLoop(IElement new_element)
     {
         if (new_element == this)
@@ -52,40 +76,23 @@ public abstract class Action : IElement
         }
         return false;
     }
-    public abstract void Execute();
-    public abstract string GetInfo();
-    protected void ExecuteElements()
+    protected void CurrentExecutionInfo()
     {
-        Console.Out.WriteLine("{");
+        Console.Out.WriteLine($"\n{GetInfo()}:");
         foreach (var elem in Elements)
         {
-            if (elem is Ingredient)
-            {
-                Console.Out.WriteLine(elem.GetInfo());
-            }
-            else if (elem is Action elem_act)
+            Console.Out.WriteLine($"\t{elem.GetInfo()}");
+        }
+    }
+    protected void ExecuteElements()
+    {
+
+        foreach (var elem in Elements)
+        {
+            if (elem is Action elem_act)
             {
                 elem_act.Execute();
             }
         }
-        Console.Out.WriteLine("}");
-    }
-    public bool ContainsIngredient<T>() where T : Ingredient
-    {
-        foreach (var elem in Elements)
-        {
-            if (elem is T)
-            {
-                return true;
-            }
-            else if (elem is Action act)
-            {
-                if (act.ContainsIngredient<T>())
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 }

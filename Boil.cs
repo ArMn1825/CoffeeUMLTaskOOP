@@ -2,11 +2,11 @@ public class Boil : Action
 {
     public Boil(List<IElement> ?elements = null) : base(elements) {}
     public Boil() : base(null) {}
-    public override string GetInfo() => "Boiling ingredients";
+    public override string GetInfo() => $"PID {Id}: Boiling ingredients";
     public override void Execute()
     {
-        Console.Out.WriteLine("\nBoiling:");
         ExecuteElements();
+        CurrentExecutionInfo();
         if (ContainsIngredient<Water>() || ContainsIngredient<Ice>() || ContainsIngredient<Milk>())
         {
             Console.Out.WriteLine("Boiling completed successfully!");
