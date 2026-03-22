@@ -6,5 +6,5 @@ public abstract class Ice : Ingredient
         Shape = shape;
     }
     public override string GetInfo() =>
-        $"Ice in shape of {Shape} with mass of {Mass} g";
+        $"Ice: shape of {Shape}, mass is {Mass} g";
 }
